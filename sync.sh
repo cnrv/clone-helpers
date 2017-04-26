@@ -27,12 +27,12 @@ function sync_gcc {
     echo $PROJ
 
     if [ ! -e $WORK/$PROJ ]; then
-        git clone $ORIG_URL/$PROJ $WORK/$PROJ
+        git clone -b riscv-next $ORIG_URL/$PROJ $WORK/$PROJ
     fi
 
     cd $WORK/$PROJ
     git fetch
-    git push $CNRV_URL/$PROJ +refs/remotes/origin/riscv*:refs/heads/riscv*
+    git push $CNRV_URL/$PROJ riscv-next
     cd -
 }
 
@@ -53,6 +53,7 @@ else
     sync_repo   riscv-binutils-gdb   https://github.com/riscv   git@git.oschina.net:cnrv
     sync_repo   riscv-gnu-toolchain  https://github.com/riscv   git@git.oschina.net:cnrv
     sync_repo   riscv-fesvr          https://github.com/riscv   git@git.oschina.net:cnrv
+    sync_repo   riscv-tools          https://github.com/riscv   git@git.oschina.net:cnrv
 
     sync_repo   riscv-torture        https://github.com/ucb-bar git@git.oschina.net:cnrv
     sync_repo   berkeley-hardfloat   https://github.com/ucb-bar git@git.oschina.net:cnrv
