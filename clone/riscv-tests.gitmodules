@@ -1,0 +1,3 @@
+[submodule "env"]
+	path = env
+	url = https://git.oschina.net/cnrv/riscv-test-env.git

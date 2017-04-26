@@ -7,14 +7,32 @@ function sync_repo {
     ORIG_URL="$2"
     CNRV_URL="$3"
 
+    echo $PROJ
+
     if [ ! -e $WORK/$PROJ ]; then
         git clone $ORIG_URL/$PROJ $WORK/$PROJ
     fi
 
     cd $WORK/$PROJ
     git fetch
-    git push --mirror $CNRV_URL/$PROJ
     git push $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    cd -
+}
+
+function sync_gcc {
+    PROJ="$1"
+    ORIG_URL="$2"
+    CNRV_URL="$3"
+
+    echo $PROJ
+
+    if [ ! -e $WORK/$PROJ ]; then
+        git clone $ORIG_URL/$PROJ $WORK/$PROJ
+    fi
+
+    cd $WORK/$PROJ
+    git fetch
+    git push $CNRV_URL/$PROJ +refs/remotes/origin/riscv*:refs/heads/riscv*
     cd -
 }
 
@@ -31,7 +49,7 @@ else
     sync_repo   riscv-newlib         https://github.com/riscv   git@git.oschina.net:cnrv
     sync_repo   riscv-dejagnu        https://github.com/riscv   git@git.oschina.net:cnrv
     sync_repo   riscv-glibc          https://github.com/riscv   git@git.oschina.net:cnrv
-    sync_repo   riscv-gcc            https://github.com/riscv   git@git.oschina.net:cnrv
+    sync_gcc    riscv-gcc            https://github.com/riscv   git@git.oschina.net:cnrv
     sync_repo   riscv-binutils-gdb   https://github.com/riscv   git@git.oschina.net:cnrv
     sync_repo   riscv-gnu-toolchain  https://github.com/riscv   git@git.oschina.net:cnrv
     sync_repo   riscv-fesvr          https://github.com/riscv   git@git.oschina.net:cnrv

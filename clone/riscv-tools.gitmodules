@@ -1,0 +1,21 @@
+[submodule "riscv-isa-sim"]
+	path = riscv-isa-sim
+	url = https://git.oschina.net/cnrv/riscv-isa-sim.git
+[submodule "riscv-fesvr"]
+	path = riscv-fesvr
+	url = https://git.oschina.net/cnrv/riscv-fesvr.git
+[submodule "riscv-pk"]
+	path = riscv-pk
+	url = https://git.oschina.net/cnrv/riscv-pk.git
+[submodule "riscv-opcodes"]
+	path = riscv-opcodes
+	url = https://git.oschina.net/cnrv/riscv-opcodes.git
+[submodule "riscv-tests"]
+	path = riscv-tests
+	url = https://git.oschina.net/cnrv/riscv-tests.git
+[submodule "riscv-llvm"]
+	path = riscv-llvm
+	url = https://git.oschina.net/cnrv/riscv-llvm.git
+[submodule "riscv-gnu-toolchain"]
+	path = riscv-gnu-toolchain
+	url = https://git.oschina.net/cnrv/riscv-gnu-toolchain.git
