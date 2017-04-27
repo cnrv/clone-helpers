@@ -13,8 +13,7 @@ function get_submodules {
 function get_riscv_tools {
     cd $1
     cp $2 .gitmodules
-    git submodule update --init
-    git submodule update --recursive riscv-gnu-toolchain
+    git submodule update --init --recursive
     git checkout .gitmodules
 }
 
