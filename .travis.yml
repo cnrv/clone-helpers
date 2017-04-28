@@ -1,4 +1,27 @@
 language: c
+matrix:
+  - env:
+    - PRJ=riscv-test-env       SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-tests          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-pk             SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-opcodes        SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-llvm           SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-clang          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-isa-sim        SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-newlib         SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-dejagnu        SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-glibc          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-gcc            SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-binutils-gdb   SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-gnu-toolchain  SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-fesvr          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+    - PRJ=riscv-tools          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
+                                                                                          
+    - PRJ=riscv-torture        SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
+    - PRJ=berkeley-hardfloat   SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
+    - PRJ=firrtl               SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
+    - PRJ=chisel3              SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
+    - PRJ=rocket-chip          SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
 
 addons:
   ssh_known_hosts: 
@@ -12,7 +35,7 @@ before_install:
 
 script:
 - export WORK=$HOME/.sync
-- travis_wait 30 ./sync-with-ssh-agent.sh
+- ./sync-with-ssh-agent.sh
 
 cache:
   directories:
