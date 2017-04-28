@@ -1,6 +1,6 @@
 language: c
-matrix:
-  - env:
+env:
+  matrix:
     - PRJ=riscv-test-env       SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
     - PRJ=riscv-tests          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
     - PRJ=riscv-pk             SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
