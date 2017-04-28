@@ -7,7 +7,11 @@ function sync_repo {
     ORIG_URL="$2"
     CNRV_URL="$3"
 
-    echo $PROJ
+    echo "------------------------------------------------------------------------------"
+    echo "Sync Project: $PROJ"
+    echo "  From: $ORIG_URL/$PROJ"
+    echo "  To:   $CNRV_URL/$PROJ"
+    echo
 
     if [ ! -e $WORK/$PROJ ]; then
         git clone $ORIG_URL/$PROJ $WORK/$PROJ

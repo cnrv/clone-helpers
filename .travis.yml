@@ -1,10 +1,17 @@
 language: c
+
 addons:
   ssh_known_hosts: git.oschina.net
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_942a9424c0f4_key -iv $encrypted_942a9424c0f4_iv
   -in id_rsa.enc -out id_rsa -d
 - chmod 600 id_rsa
 
 script:
-- WORK=. ssh-agent bash -c 'ssh-add id_rsa; ./sync.sh'
+- export WORK=$HOME/.sync
+- ssh-agent bash -c 'ssh-add id_rsa; ./sync.sh'
+
+cache:
+  directories:
+  - $HOME/.sync
