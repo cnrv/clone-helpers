@@ -20,7 +20,6 @@ function sync_repo {
     cd $WORK/$PROJ
     git fetch --verbose
     git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
-    cd -
 }
 
 if [ "x$WORK" = "x" ]; then
