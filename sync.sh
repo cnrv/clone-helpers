@@ -14,12 +14,12 @@ function sync_repo {
     echo
 
     if [ ! -e $WORK/$PROJ ]; then
-        travis_retry git clone --verbose $ORIG_URL/$PROJ $WORK/$PROJ
+        git clone --verbose $ORIG_URL/$PROJ $WORK/$PROJ
     fi
 
     cd $WORK/$PROJ
-    travis_retry git fetch --verbose
-    travis_retry git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    git fetch --verbose
+    git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 }
 
 if [ "x$WORK" = "x" ]; then
