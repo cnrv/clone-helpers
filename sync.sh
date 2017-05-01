@@ -19,6 +19,10 @@ function sync_repo {
 
     cd $WORK/$PROJ
     git fetch --verbose
+
+    # simple retry 3 times.
+    git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
     git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 }
 
