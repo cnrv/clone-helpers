@@ -1,31 +1,28 @@
 language: c
 env:
   matrix:
-  - PRJ=riscv-test-env       SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-tests          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-pk             SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-opcodes        SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-llvm           SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-clang          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-isa-sim        SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-newlib         SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-dejagnu        SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-glibc          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-gcc            SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-binutils-gdb   SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-gnu-toolchain  SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-fesvr          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-tools          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
-  - PRJ=riscv-torture        SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
-  - PRJ=berkeley-hardfloat   SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
-  - PRJ=firrtl               SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
-  - PRJ=chisel3              SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
-  - PRJ=rocket-chip          SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
-before_install:
-- openssl aes-256-cbc -K $encrypted_942a9424c0f4_key -iv $encrypted_942a9424c0f4_iv
-  -in setup-credential.sh.enc -out setup-credential.sh -d
-- chmod +x setup-credential.sh
-- "./setup-credential.sh"
+  - PRJ=riscv-test-env       SRC=https://github.com/riscv
+  - PRJ=riscv-tests          SRC=https://github.com/riscv
+  - PRJ=riscv-pk             SRC=https://github.com/riscv
+  - PRJ=riscv-opcodes        SRC=https://github.com/riscv
+  - PRJ=riscv-llvm           SRC=https://github.com/riscv
+  - PRJ=riscv-clang          SRC=https://github.com/riscv
+  - PRJ=riscv-isa-sim        SRC=https://github.com/riscv
+  - PRJ=riscv-newlib         SRC=https://github.com/riscv
+  - PRJ=riscv-dejagnu        SRC=https://github.com/riscv
+  - PRJ=riscv-glibc          SRC=https://github.com/riscv
+  - PRJ=riscv-gcc            SRC=https://github.com/riscv
+  - PRJ=riscv-binutils-gdb   SRC=https://github.com/riscv
+  - PRJ=riscv-gnu-toolchain  SRC=https://github.com/riscv
+  - PRJ=riscv-fesvr          SRC=https://github.com/riscv
+  - PRJ=riscv-tools          SRC=https://github.com/riscv
+  - PRJ=riscv-torture        SRC=https://github.com/ucb-bar
+  - PRJ=berkeley-hardfloat   SRC=https://github.com/ucb-bar
+  - PRJ=firrtl               SRC=https://github.com/ucb-bar
+  - PRJ=chisel3              SRC=https://github.com/ucb-bar
+  - PRJ=rocket-chip          SRC=https://github.com/ucb-bar
+  global:
+  - secure: S/eaJUbVjrJPgwFZpow+k+KhlXPxIHYa7JtJtoiSbSGsU53BnKLgW4zIIYwpPyDbVjow6NmCVG8lG9x5OatYOr1Ch9+PaNbv808ewfm3fFi2vUq5QtNt7vi+KQ7W3JDNpj5yGe5qZ2Pxgc5hX4ymL7PLNQ98JxcyoMQaSoGSiTb9lAmCfECg2n+nU6V4+n4Ev9wmddX53U1Ro6LXyCuACEOCEuHh/vufeuAZ1B6fCQCGvZUQw/EnseHKXvL2TEM+DIvTPrCht8I/PGxKU1EII0h/iBaCv5m2idngjVctJ2AwsKpk93x8bZPENNcwCqhQuALIB+uuXps/y65UUUqoYKygrdmwGg/Yi5/W9qS0k5r3yLk0Gq6HUrV9nWIvglb5SnLhzBgwUVPtgMctd11Bf6l8DpjCPKPOF1m2676zka9xsrdVsIphm67cRR2DOTEGynXFfTILPnPDYrNRme5iJywemaWFbfKOTHxaC9A+oILwPZTJbQeCwyMOJs5dU3ujQyzfuDh2xJ5uKdGgEQGzBeZn5TAOE3JUm2EKiyRn8DOu90nRBtJ4NPDLBv73krE8+G9Zqht7O0nhM+CO1Mcj2gbCSx2Oe1Y/t6QTzCFO5it+SFSUNlw8Hmj343OL/onWD0tx4HHzeYdQa0c3vQliIQzTLRuCnuSnB3XDynb+yPA=
 script:
 - export WORK=$HOME/.sync
 - "./sync.sh"

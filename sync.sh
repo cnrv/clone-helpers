@@ -20,12 +20,12 @@ function sync_repo {
     cd $WORK/$PROJ
     git fetch --verbose
 
-    # simple retry 3 times.
-    git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    echo "PUSH to cnrv"
+    git push -q $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 }
 
 if [ "x$WORK" = "x" ]; then
     echo "WORK is not defined."
 else
-    sync_repo  $PRJ $SRC $DST
+    sync_repo  $PRJ $SRC $DST_ENC_URL
 fi
