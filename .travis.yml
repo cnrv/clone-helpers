@@ -25,7 +25,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_942a9424c0f4_key -iv $encrypted_942a9424c0f4_iv
   -in setup-credential.sh.enc -out setup-credential.sh -d
 - chmod +x setup-credential.sh
-- "./setup-credential"
+- "./setup-credential.sh"
 script:
 - export WORK=$HOME/.sync
 - "./sync.sh"
