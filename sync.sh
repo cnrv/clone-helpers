@@ -10,7 +10,7 @@ function sync_repo {
     echo "------------------------------------------------------------------------------"
     echo "Sync Project: $PROJ"
     echo "  From: $ORIG_URL/$PROJ"
-    echo "  To:   $CNRV_URL/$PROJ"
+    echo "  To:   CNRV-MIRROR/$PROJ"
     echo
 
     if [ ! -e $WORK/$PROJ ]; then
