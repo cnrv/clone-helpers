@@ -1,44 +1,34 @@
 language: c
 env:
   matrix:
-    - PRJ=riscv-test-env       SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-tests          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-pk             SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-opcodes        SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-llvm           SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-clang          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-isa-sim        SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-newlib         SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-dejagnu        SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-glibc          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-gcc            SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-binutils-gdb   SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-gnu-toolchain  SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-fesvr          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-    - PRJ=riscv-tools          SRC=https://github.com/riscv   DST=git@git.oschina.net:cnrv
-                                                                                          
-    - PRJ=riscv-torture        SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
-    - PRJ=berkeley-hardfloat   SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
-    - PRJ=firrtl               SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
-    - PRJ=chisel3              SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
-    - PRJ=rocket-chip          SRC=https://github.com/ucb-bar DST=git@git.oschina.net:cnrv
-
-addons:
-  ssh_known_hosts: 
-  - git.oschina.net
-
+  - PRJ=riscv-test-env       SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-tests          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-pk             SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-opcodes        SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-llvm           SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-clang          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-isa-sim        SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-newlib         SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-dejagnu        SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-glibc          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-gcc            SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-binutils-gdb   SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-gnu-toolchain  SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-fesvr          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-tools          SRC=https://github.com/riscv   DST=https://git.oschina.net/cnrv
+  - PRJ=riscv-torture        SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
+  - PRJ=berkeley-hardfloat   SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
+  - PRJ=firrtl               SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
+  - PRJ=chisel3              SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
+  - PRJ=rocket-chip          SRC=https://github.com/ucb-bar DST=https://git.oschina.net/cnrv
 before_install:
 - openssl aes-256-cbc -K $encrypted_942a9424c0f4_key -iv $encrypted_942a9424c0f4_iv
-  -in id_rsa.enc -out id_rsa -d
-- chmod 600 id_rsa
-- TRAVIS_SSH_KEY_TYPES=$TRAVIS_SSH_KEY_TYPES HOME=$HOME ./ssh-key-add.sh || ./ssh-key-add.sh || ./ssh-key-add.sh
-- cat $HOME/.ssh/known_hosts
-
+  -in setup-credential.sh.enc -out setup-credential.sh -d
+- chmod +x setup-credential.sh
+- "./setup-credential"
 script:
 - export WORK=$HOME/.sync
-- ./sync-with-ssh-agent.sh
-
+- "./sync.sh"
 cache:
   directories:
-  - $HOME/.sync
-  - $HOME/.ssh/known_hosts
+  - "$HOME/.sync"

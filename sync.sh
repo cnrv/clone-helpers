@@ -22,8 +22,6 @@ function sync_repo {
 
     # simple retry 3 times.
     git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
-    git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
-    git push --verbose $CNRV_URL/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 }
 
 if [ "x$WORK" = "x" ]; then
