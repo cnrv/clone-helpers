@@ -32,19 +32,3 @@ Rocket-Chip被下载到`clone-helper/rocket-chip`。
 这样，子模块的远程地址就被重定向。当子模块初始完成后，`.gitmodules`文件就被恢复，所以工程代码并没有被改变。
 
 
-帮助我们同步镜像
-=======================
-我们需要在国外的RISC-V爱好者帮助我们同步镜像到oschina。
-如果你有一台经常开机的电脑，有较快的网络速度，链接GitHub和oschina的速度都比较快，那么，我们需要你！ :-)
-
-### 设定同步服务器
-
-1. 联系cnrv的管理员，获得oschina里镜像工程的读写权。
-2. 生成电脑的ssh公钥，并添加到自己的oschina SSH keys (http://git.oschina.net/profile/sshkeys)
-3. 建立一个同步缓冲文件夹，比如 `mkdir -p /mnt/scrtach/cnrv-sync`
-4. 将sync.sh添加到电脑的cron计划中，比如在`/etc/crontab`中添加<br>
-`00 * * * *   USERID   WORK=/mnt/scrtach/cnrv-sync PATH-TO-THIS-REPO/sync.sh`<br>
-`USERID`是你的用户名，`PATH-TO-THIS-REPO`是该repo的本地地址。
-*注意*：第一次会下载和上传接近几个GB的数据，根据你的网速，也许要半小时到一小时。
-
-
