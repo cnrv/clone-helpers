@@ -151,7 +151,7 @@ env:
   - PRJ=uncore                                         SRC_ORIG=lowrisc
   - PRJ=zscale                                         SRC_ORIG=lowrisc
   global:
-  - secure: g+u7FfYpUD3tkLbBYHFM7k7gGb+owRBBBP/aaxZBb/ry0wWD0+vrpSyCR6pLEjuK93C6clwfOkGyumCYRicKvxJT+3BXuTnmdFDuF+42HPWHm+xA7HVkwGl3a2V7de0Xb8zjV6nzFxtB3DxMHfZIPjFw7VF4mfZHnhY0IlH+SrFqAUIVK6r6dx8XRSrwwZIT2hmClH8eWrgzfC9CTkcXqJg5n2E9kCwjZ8e+9Yr8pswIARJB0GVnO5k8EggYhj9if/B0Bflm6hlB90omRdtP2idDuAn6QI1A7h3OuAcwvdS8hsN9WR5KjzwWccZlGLij92MR+/WD0q/NUlF3jGfedxvHHHa0tXs6Ek9CHxBwjtzyTysziGNtDoi0TaqEVClC37q5+UCKG6CDw9prAsxx7ycmy3X3D/WZNSG1PMKIMqoA8uE+uvaQnkdtG6suuWjSOJSb24zmJJzJtMMeqUHFPWTSVFV1WrtT3WAdrb4BJkyQ8ScUhnPA2F5E0erJS1l5V++MKCz7MMATVNRQQDfc0zI/5Qa+bBpSc8NEcPMtrTXxTj0Dhu/GRPwzO3aViQ2jcNflvYH/eWJ9HJwdp726/1eyOd5+OW/vZAyWuTlKWi1rnSkvJ/UVQPe85nv/hHBVfPsUkdClorVM19m5c9qgLzix7nVkm46vR1i45sB52Z0=
+  - secure: TEcQb4qDLq2eVEwuZ9SDzOAyFNXErv5UrdEAC8+1d/h0eXAc+ubY+RGx0aKblpYpOLQLzMmwTJMEcxjhA6VflXNznpK2fnDpL1Rl3t0szI8toDu/qe7p8Ejyqsrq1yYmPKPFEhvyaTul0TQqdfGW4c26TPTtTGhf3vYJy56aQxF3HK6YS1YNnR1rD7ujwBtQqaKt4vFAj9KNU5X9jOaqxpvjTerRAJ9Sk8xgDdaHblalWZvInV85lyzDrm44DXPc5/HaxgzkTcBvKTlF1zcOVVTwPnrJjY+ucrkfvkQMdP+yk7PPbfGhCsx3B1Mpw95AiqvNk/eXukzVY63oKUTQ14UgRaC4a7OqUm7oTlAXESvR9msmsE1t3236yxUSBkmzEYZOhqj+qDBNxmPr/ajS/DYxBSNgedAquWlhs4vOeZB3yxo5GZ8/HJJ/BAv1g6iW9OR1GRkLU1lmZdRx0WN5mXu5RFYbiYsMUoyU18+eATVSZCpkCIIv0hA5kY1cCNsC95HgU02SSgkNkCfaIO4anLKt7W495KsPH6dnylf6kAByVGWgdsZsLl6QTUJBODCpN3kDGxxfl1TZ8X5acnemNYvvavh32WH1fvylQOcCSihSjMjMHe/pipX8x/55IDs6BoVOpOuuIw6DzSPh21oAb6YsYjJOIXNzYL89V+C3gAc=
 script:
 - export WORK=$HOME/.sync
 - "./sync.sh"
