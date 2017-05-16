@@ -13,11 +13,11 @@ function sync_repo {
     echo "  To:   CNRV-MIRROR/$PROJ"
     echo
 
-    if [ ! -e $WORK/$PROJ ]; then
-        git clone --verbose https://github.com/$SRC_ORIG/$PROJ $WORK/$PROJ
+    if [ ! -e $WORK/$SRC_ORIG/$PROJ ]; then
+        git clone --verbose https://github.com/$SRC_ORIG/$PROJ $WORK/$SRC_ORIG/$PROJ
     fi
 
-    cd $WORK/$PROJ
+    cd $WORK/$SRC_ORIG/$PROJ
     git fetch --verbose
 
     echo "PUSH to cnrv"
@@ -27,5 +27,5 @@ function sync_repo {
 if [ "x$WORK" = "x" ]; then
     echo "WORK is not defined."
 else
-    sync_repo  $PRJ $SRC $DST_ENC_URL
+    sync_repo  $PRJ $SRC_ORIG $DST_ENC_URL
 fi
