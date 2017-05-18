@@ -5,7 +5,7 @@ repo = Repo(".")
 with open("push.sh", 'w') as f:
 	for ref in repo.refs:
 		if ref.name.startswith("origin/"):
-			f.write("-" * 80 + "\n")
+			f.write("echo %s\n" % ("-" * 80))
 			f.write("echo push branch: %s\n" % ref.name)
 			commits = repo.git.rev_list(ref.name).splitlines()
 			clen = len(commits)
