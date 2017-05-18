@@ -21,7 +21,7 @@ function sync_repo {
     git fetch --verbose
 
     echo "PUSH to cnrv"
-    git push -q $CNRV_URL/cnrv-$SRC_ORIG/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    git push $CNRV_URL/cnrv-$SRC_ORIG/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 }
 
 if [ "x$WORK" = "x" ]; then
