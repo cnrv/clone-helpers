@@ -6,6 +6,7 @@ function sync_repo {
     PROJ="$1"
     SRC_ORIG="$2"
     CNRV_URL="$3"
+    SCRIPT_DIR="$4"
 
     echo "------------------------------------------------------------------------------"
     echo "Sync Project: $PROJ"
@@ -20,7 +21,7 @@ function sync_repo {
     cd $WORK/$SRC_ORIG/$PROJ
     git fetch --verbose
 
-    python push.py
+    python $SCRIPT_DIR/push.py
 
     source push.sh
 
@@ -31,5 +32,5 @@ function sync_repo {
 if [ "x$WORK" = "x" ]; then
     echo "WORK is not defined."
 else
-    sync_repo  $PRJ $SRC_ORIG $DST_ENC_URL
+    sync_repo  $PRJ $SRC_ORIG $DST_ENC_URL $TRAVIS_BUILD_DIR
 fi
