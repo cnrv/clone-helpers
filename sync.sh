@@ -21,7 +21,7 @@ function sync_repo {
     cd $WORK/$SRC_ORIG/$PROJ
     git fetch --verbose
 
-    python $SCRIPT_DIR/push.py
+    python $SCRIPT_DIR/push.py $CNRV_URL/cnrv-$SRC_ORIG/$PROJ
 
     source push.sh
 
