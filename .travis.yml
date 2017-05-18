@@ -1,4 +1,4 @@
-language: c
+language: python
 env:
   matrix:
   - PRJ=debug-taskgroup                                SRC_ORIG=riscv
