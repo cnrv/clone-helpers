@@ -1,15 +1,18 @@
 import sys
+import urllib3
 
-GITHUB_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+urllib3.disable_warnings()
 
-USERNAME="????"
-PASSWORD="????"
+GITHUB_KEY=""
+
+USERNAME=""
+PASSWORD=""
 
 def get_org_repos():
 	from github import Github
 	g = Github(GITHUB_KEY)
 
-	orgs_list = ['riscv', 'ucb-bar', 'sifive', 'lowrisc']
+	orgs_list = ['riscv', 'ucb-bar', 'sifive', 'lowRISC']
 
 	org_repos = []
 	for org in orgs_list:
@@ -29,6 +32,8 @@ def create_projects(org_repos):
 	from selenium.webdriver.support import expected_conditions as EC
 	from pprint import pprint
 	import time
+
+	import requests
 	
 	driver = webdriver.Firefox()
 	driver.get("https://git.oschina.net/login")
@@ -47,6 +52,15 @@ def create_projects(org_repos):
 
 	for org_repo in org_repos:
 		org, repo = org_repo
+
+		print "Check whether the project [%s/%s] existed:" % (org, repo)
+		r = requests.get("https://git.oschina.net/cnrv-%s/%s" % (org, repo.lower().replace(".", "-")))
+		if r.status_code != 404:
+			print "Yes"
+			continue
+		else:
+			print "No"
+
 		print "Start Create Project: %s/%s on git.oschina.net" % (org, repo)
 		try:
 			driver.get("https://git.oschina.net/projects/new")
@@ -59,7 +73,9 @@ def create_projects(org_repos):
 
 			
 		driver.find_element_by_xpath('//div[text()="cnrv-riscv"]').click()
+		time.sleep(1)
 		driver.find_element_by_xpath('//div[text()="cnrv-%s"]' % org).click()
+		time.sleep(1)
 		
 	#	driver.find_element_by_id("import-link").click()
 	#	driver.find_element_by_id("project_import_url").clear()
