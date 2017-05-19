@@ -23,7 +23,7 @@ function sync_repo {
 
     git remote -v add cnrv $CNRV_URL/cnrv-$SRC_ORIG/$PROJ || true
 
-    git fetch -v origin --verbose
+    git fetch -v cnrv --verbose
 
     python $SCRIPT_DIR/push.py
 
