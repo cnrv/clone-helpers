@@ -4,7 +4,6 @@ import urllib3
 urllib3.disable_warnings()
 
 GITHUB_KEY=""
-
 USERNAME=""
 PASSWORD=""
 
@@ -54,7 +53,7 @@ def create_projects(org_repos):
 		org, repo = org_repo
 
 		print "Check whether the project [%s/%s] existed:" % (org, repo)
-		r = requests.get("https://git.oschina.net/cnrv-%s/%s" % (org, repo.lower().replace(".", "-")))
+		r = requests.get("https://git.oschina.net/cnrv-%s/%s" % (org, repo))
 		if r.status_code != 404:
 			print "Yes"
 			continue
@@ -83,9 +82,13 @@ def create_projects(org_repos):
 
 		driver.find_element_by_id("project_name").clear()
 		driver.find_element_by_id("project_name").send_keys(repo)
+		time.sleep(1)
 		
+		driver.find_element_by_id("project_path").clear()
+		driver.find_element_by_id("project_path").send_keys(repo)
+		time.sleep(1)
+
 		driver.find_element_by_id("readme").click()
-		
 		
 		driver.find_element_by_id("new_project").submit()
 		print "Wait 3s"
