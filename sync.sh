@@ -19,14 +19,18 @@ function sync_repo {
     fi
 
     cd $WORK/$SRC_ORIG/$PROJ
-    git fetch --verbose
+    git fetch -v origin --verbose
 
-    python $SCRIPT_DIR/push.py $CNRV_URL/cnrv-$SRC_ORIG/$PROJ
+    git remote -v add cnrv $CNRV_URL/cnrv-$SRC_ORIG/$PROJ || true
+
+    git fetch -v origin --verbose
+
+    python $SCRIPT_DIR/push.py
 
     source push.sh
 
     echo "PUSH to cnrv"
-    git push -v $CNRV_URL/cnrv-$SRC_ORIG/$PROJ +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    git push -v cnrv +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 }
 
 if [ "x$WORK" = "x" ]; then
