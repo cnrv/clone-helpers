@@ -41,3 +41,5 @@ with open("push.sh", 'w') as f:
 					if push_commit in cnrv_remote_ref_sets and push_commit != push_commits[-1]:
 						continue
 					f.write("git push -v %s %s:refs/heads/%s\n" % ('cnrv', push_commit, ref_wo_origin))
+
+				cnrv_remote_ref_sets |= set(push_commits)
