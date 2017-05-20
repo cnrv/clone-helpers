@@ -1,6 +1,6 @@
 from git import Repo
 
-INC_STEP = 10
+INC_STEP = 2000
 
 repo = Repo(".")
 cnrv_remote_ref_sets = set()
