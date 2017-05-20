@@ -9,11 +9,13 @@ with open("push.sh", 'w') as f:
 			f.write("echo %s\n" % ("-" * 80))
 			f.write("echo push branch: %s\n" % ref.name)
 
-			cnrv_branch_exist = len(filter(lambda r: r.name == ("cnrv/%s" % ref.name), repo.refs)) > 0
+			ref_wo_origin = ref.name[len('origin/'):]
+
+			cnrv_branch_exist = len(filter(lambda r: r.name == ("cnrv/%s" % ref_wo_origin), repo.refs)) > 0
 
 			# check the remote status
 			if cnrv_branch_exist is True:
-				commits = repo.git.rev_list("cnrv/%s..%s" % (ref.name, ref.name)).splitlines()
+				commits = repo.git.rev_list("cnrv/%s..origin/%s" % (ref_wo_origin, ref_wo_origin)).splitlines()
 			else:
 				commits = repo.git.rev_list(ref.name).splitlines()
 
@@ -25,5 +27,4 @@ with open("push.sh", 'w') as f:
 				push_commits.append(commits[-1])
 				push_commits.reverse()
 				for push_commit in push_commits:
-					f.write("echo git push -v %s %s:refs/heads/%s\n" % ('cnrv', push_commit, ref.name))
-					f.write("git push -v %s %s:refs/heads/%s\n" % ('cnrv', push_commit, ref.name))
+					f.write("git push -v %s %s:refs/heads/%s\n" % ('cnrv', push_commit, ref_wo_origin))
