@@ -98,7 +98,7 @@ parser.add_argument('repo', metavar='repository', nargs=1,
 parser.add_argument('dir', metavar='directory', nargs='?',
                     help='Directory of the local clone.')
 parser.add_argument('-b', dest='branch',
-                    help='sum the integers (default: find the max)')
+                    help='The branch to be cloned (default: master / auto-detect)')
 args = parser.parse_args()
 
 # analyse the remote repo URL
