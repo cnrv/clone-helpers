@@ -99,6 +99,8 @@ parser.add_argument('dir', metavar='directory', nargs='?',
                     help='Directory of the local clone.')
 parser.add_argument('-b', dest='branch',
                     help='The branch to be cloned (default: master / auto-detect)')
+parser.add_argument('--recursive', action='store_true', dest='recursive',
+                    help='Checkout all submodules recursively.')
 args = parser.parse_args()
 
 # analyse the remote repo URL
@@ -155,11 +157,12 @@ os.chdir(work_dir)
 # recover the original remote url
 subprocess.check_call("git remote set-url origin " + tuple_to_url(remote), shell=True)
 
-# recursively process all submodules
-proc_submodules(remote)
+if args.recursive :
+    # recursively process all submodules
+    proc_submodules(remote)
 
-# do a final submodules checout recursively
-subprocess.call("git submodule update --init --recursive", shell=True)
+    # do a final submodules checout recursively
+    subprocess.call("git submodule update --init --recursive", shell=True)
 
 ######################## End of script ############################
 os.chdir(root_dir)
