@@ -39,7 +39,7 @@ def get_cnrv_image(url):
         print("INFO: There is no image available from CNRV for repository " + tuple_to_url(url) + ", use the original instead.")
         cnrv = url
     else:
-        print("INFO: Find available CNRV image at " + tuple_to_url(cnrv))
+        print("INFO: Find an available CNRV image at " + tuple_to_url(cnrv))
     print("<===")
     return cnrv
 
@@ -58,9 +58,6 @@ def fix_head_branch():
 
 # the recursive submodule checkout function
 def proc_submodules(remote):
-    fix_head_branch()
-    subprocess.call("git fetch", shell=True)
-    
     # check whether there are submodules
     if not os.path.isfile(".gitmodules"):
         return
@@ -85,6 +82,7 @@ def proc_submodules(remote):
         subprocess.call("git submodule update --init " + sm_path, shell=True)
         # recursively checkout the submodule
         os.chdir(sm_path)
+        fix_head_branch()
         proc_submodules(orig_url)
         os.chdir(cur_dir)
     subprocess.call("git checkout .gitmodules", shell=True)
@@ -156,6 +154,9 @@ os.chdir(work_dir)
 
 # recover the original remote url
 subprocess.check_call("git remote set-url origin " + tuple_to_url(remote), shell=True)
+
+# fix the potential HEAD branch
+fix_head_branch()
 
 if args.recursive :
     # recursively process all submodules
