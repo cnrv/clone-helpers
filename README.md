@@ -6,29 +6,60 @@
 
 ### 下载Rocket-Chip工程
 
-~~~
+~~~shell
 git clone https://github.com/cnrv/clone-helpers.git
 cd clone-helpers
-./clone-rocket-chip.sh
+./cnrv-clone.py --recursive https://github.com/ucb-bar/rocket-chip.git
 ~~~
 
-Rocket-Chip被下载到`clone-helper/rocket-chip`。
-所有的submodule地址都被重定向到`http://git.oschina.net`并可以通过`git submodule update --recursive`获得最新的代码。
+用于下载的`cnrv-clone.py`脚本需要用到3个python程序包:
+* stdconfigparser<br>
+  解析git工程的submodule配置
+* argparse<br>
+  解析脚本输入参数
+* subprocess<br>
+  在python环境中执行系统命令
 
-*注意事项*：submodule的远程地址被内部重定向到`http://git.oschina.net`而不受`.gitmodules控制。
-如果需要更改.gitmodule，整个工程可能需要重新下载。具体原因请参看下面的镜像机理部分的说明。
+其中argparse和subprocess应该被python 2.7默认安装。stdconfigparser需要单独安装：
 
-镜像的机理
-======================
+~~~shell
+sudo apt-get install python-pip
+sudo pip install stdconfigparser
+~~~
 
-所有的RISC-V工程被定期自动的同步到oschina的服务器。
-为了能在修改工程代码的情况下重定向子模块远程地址，我们利用了git的内部机制：
+### 下载其他工程
 
-以rocket-chip的子模块chisel3为例，当chisel3子模块被`git submodule --init`命令初始化后，其远程地址被拷贝到`.git/modules/chisel3/config`。
-此后，修改`chisel3/.gitmodules`并不会自动改变chisel3模块的远程地址。
-`git submodule update`命令仍然会使用`.git/modules/chisel3/config`定义的远程地址。
+该下载脚本也可用于下载其他的RISC-V工程。根据工程的地址，脚本会自动检索工程是否被oschina镜像。如果有镜像，则会选择从镜像下载，否则从源地址下载。
+脚本的具体参数如下：
 
-利用该特性，`clone-rocket-chip.sh`在初始化子模块时，会先用clone文件夹下的submodule文件替代`.gitmodule`，然后初始化子模块。
-这样，子模块的远程地址就被重定向。当子模块初始完成后，`.gitmodules`文件就被恢复，所以工程代码并没有被改变。
+~~~shell
+$ ./cnrv-clone.py -h
+usage: cnrv-clone.py [-h] [-b BRANCH] [--recursive] repository [directory]
+
+Smart clone a repo from available CNRV images.
+
+positional arguments:
+  repository   URL of the remote repository to clone
+  directory    Directory of the local clone.
+
+optional arguments:
+  -h, --help   show this help message and exit
+  -b BRANCH    The branch to be cloned (default: master / auto-detect)
+  --recursive  Checkout all submodules recursively.
+~~~
+
+### 现在已被镜像的工程
+
+具体的工程列表可参看`.travis.yml`文件。其中几个被经常下载的工程包括：
+
+* https://github.com/riscv/riscv-linux
+* https://github.com/riscv/riscv-tools
+* https://github.com/ucb-bar/rocket-chip
+* https://github.com/ucb-bar/chisel
+* https://github.com/sifive/freedom
+* https://github.com/sifive/freedom-e-sdk
+* https://github.com/sifive/freedom-u-sdk
+* https://github.com/lowrisc/lowrisc-chip
+
 
 
