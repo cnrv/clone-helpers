@@ -47,15 +47,15 @@ env:
   - PRJ=chisel-library-template                        SRC_ORIG=ucb-bar
   - PRJ=chisel-sift                                    SRC_ORIG=ucb-bar
   - PRJ=chisel-template                                SRC_ORIG=ucb-bar
-  - PRJ=chisel-testers                                 SRC_ORIG=ucb-bar
+  - PRJ=chisel-testers                                 SRC_ORIG=freechipsproject
   - PRJ=chisel-torture                                 SRC_ORIG=ucb-bar
   - PRJ=chisel-tutorial                                SRC_ORIG=ucb-bar
-  - PRJ=chisel3                                        SRC_ORIG=ucb-bar
+  - PRJ=chisel3                                        SRC_ORIG=freechipsproject
   - PRJ=chisel3-wiki                                   SRC_ORIG=ucb-bar
   - PRJ=context-dependent-environments                 SRC_ORIG=ucb-bar
   - PRJ=dsptools                                       SRC_ORIG=ucb-bar
-  - PRJ=firrtl                                         SRC_ORIG=ucb-bar
-  - PRJ=firrtl-interpreter                             SRC_ORIG=ucb-bar
+  - PRJ=firrtl                                         SRC_ORIG=freechipsproject
+  - PRJ=firrtl-interpreter                             SRC_ORIG=freechipsproject
   - PRJ=fpga-images-zc706                              SRC_ORIG=ucb-bar
   - PRJ=fpga-images-zedboard                           SRC_ORIG=ucb-bar
   - PRJ=fpga-images-zybo                               SRC_ORIG=ucb-bar
@@ -77,7 +77,7 @@ env:
   - PRJ=riscv-sodor                                    SRC_ORIG=ucb-bar
   - PRJ=riscv-torture                                  SRC_ORIG=ucb-bar
   - PRJ=rocket                                         SRC_ORIG=ucb-bar
-  - PRJ=rocket-chip                                    SRC_ORIG=ucb-bar
+  - PRJ=rocket-chip                                    SRC_ORIG=freechipsproject
   - PRJ=sbt-extras                                     SRC_ORIG=ucb-bar
   - PRJ=testchipip                                     SRC_ORIG=ucb-bar
   - PRJ=ucb-bar.github.io                              SRC_ORIG=ucb-bar
