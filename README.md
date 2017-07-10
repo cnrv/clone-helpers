@@ -54,8 +54,8 @@ optional arguments:
 
 * https://github.com/riscv/riscv-linux
 * https://github.com/riscv/riscv-tools
-* https://github.com/ucb-bar/rocket-chip
-* https://github.com/ucb-bar/chisel
+* https://github.com/freechipsproject/rocket-chip
+* https://github.com/freechipsproject/chisel3
 * https://github.com/sifive/freedom
 * https://github.com/sifive/freedom-e-sdk
 * https://github.com/sifive/freedom-u-sdk
