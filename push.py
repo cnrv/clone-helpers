@@ -1,22 +1,28 @@
 from git import Repo
+import sys
+
+def verbose(log):
+	sys.stdout.write(log + "\n")
+	sys.stdout.flush()
 
 INC_STEP = 2000
 
+verbose( "-" * 80 )
 repo = Repo(".")
 cnrv_remote_ref_sets = set()
 
-print "Cache all cnrv remote cache"
+verbose( "Cache all cnrv remote cache" )
 for ref in repo.refs:
 	if ref.name.startswith("cnrv/") and ref.name != "cnrv/HEAD":
-		print "\tprocessing... branch", ref.name
+		verbose( "\tprocessing... branch %s" % ref.name )
 		commits = repo.git.rev_list(ref.name).splitlines()
 		cnrv_remote_ref_sets |= set(commits)
 
-print "Start generate push script"
+verbose( "Start generate push script" )
 with open("push.sh", 'w') as f:
 	for ref in repo.refs:
 		if ref.name.startswith("origin/") and ref.name != "origin/HEAD":
-			print "\tprocessing... branch", ref.name
+			verbose( "\tprocessing... branch %s" % ref.name )
 			f.write("echo %s\n" % ("-" * 80))
 			f.write("echo push branch: %s\n" % ref.name)
 
@@ -44,3 +50,4 @@ with open("push.sh", 'w') as f:
 					f.write("git push -v %s %s:refs/heads/%s\n" % ('cnrv', push_commit, ref_wo_origin))
 
 				cnrv_remote_ref_sets |= set(push_commits)
+verbose( "-" * 80 )
