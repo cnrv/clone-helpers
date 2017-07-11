@@ -23,10 +23,13 @@ function sync_repo {
 
     git remote -v add cnrv $CNRV_URL/cnrv-$SRC_ORIG/$PROJ || true
 
+    echo "Fetch from cnrv mirror repo"
     git fetch -v cnrv --verbose
 
+    echo "Generate scripts for push to mirror"
     python $SCRIPT_DIR/push.py
 
+    echo "Start push refs for each branch"
     source push.sh
 
     echo "PUSH to cnrv"
