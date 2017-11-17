@@ -1,10 +1,10 @@
-GITHUB_KEY="dcb808279476a67d5e7eb7953414464dfc599566"
+GITHUB_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 def get_org_repos():
 	from github import Github
 	g = Github(GITHUB_KEY)
 
-	orgs_list = ['freechipsproject', 'riscv', 'ucb-bar', 'sifive', 'lowrisc']
+	orgs_list = ['riscv', 'ucb-bar', 'sifive', 'lowrisc']
 
 	org_repos = []
 	for org in orgs_list:
