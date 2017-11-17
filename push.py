@@ -51,3 +51,26 @@ with open("push.sh", 'w') as f:
 
 				cnrv_remote_ref_sets |= set(push_commits)
 verbose( "-" * 80 )
+
+# find out and delete unused branches
+verbose( "Remote all non-existent branches" )
+
+cnrv_branches = set()
+cnrv_prefix_len = len('cnrv/')
+
+origin_branches = set()
+origin_prefix_len = len('origin/')
+
+for ref in repo.refs:
+	print [ref, ]
+	if ref.name.startswith("origin/") and ref.name != "origin/HEAD":
+		origin_branches.add(ref.name[origin_prefix_len:])
+	if ref.name.startswith("cnrv/"):
+		cnrv_branches.add(ref.name[cnrv_prefix_len:])
+	
+non_exist_branches = cnrv_branches - origin_branches
+
+for ref_name in non_exist_branches:
+	cmd = 'git push --delete cnrv %s' % ref_name
+	#f.write(cmd)
+	print cmd
