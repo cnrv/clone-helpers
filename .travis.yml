@@ -63,7 +63,6 @@ env:
   - PRJ=fpga-zynq                                      SRC_ORIG=ucb-bar
   - PRJ=groundtest                                     SRC_ORIG=ucb-bar
   - PRJ=hurricane-serial                               SRC_ORIG=ucb-bar
-  - PRJ=junctions                                      SRC_ORIG=ucb-bar
   - PRJ=opencl-kernels                                 SRC_ORIG=ucb-bar
   - PRJ=OpenSoCFabric                                  SRC_ORIG=ucb-bar
   - PRJ=pfpmp                                          SRC_ORIG=ucb-bar
