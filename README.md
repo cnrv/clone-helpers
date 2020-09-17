@@ -61,5 +61,19 @@ optional arguments:
 * https://github.com/sifive/freedom-u-sdk
 * https://github.com/lowrisc/lowrisc-chip
 
+### 已知问题
 
+#### 询问oschina的用户名和密码
+
+如果在clone的过程中，屏幕出现询问oschina的用户名和密码：
+~~~
+===> check for potential CNRV image. (ignore errors below)
+Username for 'https://git.oschina.net': 
+Password for 'https://git.oschina.net': 
+~~~
+请直接回车跳过。
+
+oschina现在支持私有仓库。因此在查询一个仓库是否存在时，oschina会首先检查共有仓库，如果共有仓库查询失败，则会询问用户名和密码来用于查询私有仓库。
+cnrv-clone项目所有的镜像都是共有，不存在私有仓库，因而出现该提示时说明oschina未查询到对应镜像。
+回车跳过之后，clone-helper会自动从源github仓库下载代码，继续clone的工作。
 
